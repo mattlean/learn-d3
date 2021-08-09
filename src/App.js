@@ -1,16 +1,18 @@
+import RadialColorBurst from './RadialColorBurst'
 // import CSVInfo from './CSVInfo'
 // import Face from './Face'
-import MouseFollower from './MouseFollower'
+// import MouseFollower from './MouseFollower'
 import './App.css'
-import { range } from 'd3'
+// import { range } from 'd3'
 
-const width = 150
-const height = 150
+// const width = 150
+// const height = 150
 
-const array = range(36)
+// const array = range(36)
 
 function App() {
-  return <MouseFollower />
+  return <RadialColorBurst />
+  // return <MouseFollower />
   // return <CSVInfo />
   // return array.map(() => (
   //   <Face
