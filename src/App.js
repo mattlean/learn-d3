@@ -1,5 +1,6 @@
-import RadialColorBurst from './RadialColorBurst'
+import BarChart from './BarChart'
 // import CSVInfo from './CSVInfo'
+// import RadialColorBurst from './RadialColorBurst'
 // import Face from './Face'
 // import MouseFollower from './MouseFollower'
 import './App.css'
@@ -11,7 +12,8 @@ import './App.css'
 // const array = range(36)
 
 function App() {
-  return <RadialColorBurst />
+  return <BarChart />
+  // return <RadialColorBurst />
   // return <MouseFollower />
   // return <CSVInfo />
   // return array.map(() => (
