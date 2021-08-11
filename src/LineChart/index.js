@@ -1,9 +1,9 @@
-import { extent, format, scaleLinear } from 'd3'
+import { extent, format, scaleTime, scaleLinear, timeFormat } from 'd3'
 import AxisBottom from './AxisBottom'
 import AxisLeft from './AxisLeft'
 import Marks from './Marks'
 import useData from './useData'
-import './ScatterPlot.css'
+import './LineChart.css'
 
 const width = 960
 const height = 500
@@ -11,10 +11,9 @@ const margin = { top: 20, right: 30, bottom: 65, left: 90 }
 const xAxisLabelOffset = 50
 const yAxisLabelOffset = 40
 
-const siFormat = format('.2s')
-const xAxisTickFormat = (tickValue) => siFormat(tickValue).replace('G', 'B')
+const xAxisTickFormat = timeFormat('%a')
 
-function ScatterPlot() {
+function LineChart() {
   const data = useData()
 
   if (!data) {
@@ -22,19 +21,20 @@ function ScatterPlot() {
   }
 
   const innerWidth = width - margin.left - margin.right
-  const xAxisLabel = 'Petal Length'
-  const xValue = (d) => d.petal_length
-  const xScale = scaleLinear()
+  const xAxisLabel = 'Time'
+  const xValue = (d) => d.timestamp
+  const xScale = scaleTime()
     .domain(extent(data, xValue))
     .range([0, innerWidth])
     .nice()
 
   const innerHeight = height - margin.top - margin.bottom
-  const yAxisLabel = 'Sepal Width'
-  const yValue = (d) => d.sepal_width
+  const yAxisLabel = 'Temperature'
+  const yValue = (d) => d.temperature
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
-    .range([0, innerHeight])
+    .range([innerHeight, 0])
+    .nice()
 
   return (
     <svg width={width} height={height}>
@@ -42,10 +42,10 @@ function ScatterPlot() {
         <AxisBottom
           innerHeight={innerHeight}
           tickFormat={xAxisTickFormat}
-          tickOffset={5}
+          tickOffset={7}
           xScale={xScale}
         />
-        <AxisLeft innerWidth={innerWidth} tickOffset={5} yScale={yScale} />
+        <AxisLeft innerWidth={innerWidth} tickOffset={7} yScale={yScale} />
         <text
           x={innerWidth / 2}
           y={innerHeight + xAxisLabelOffset}
@@ -64,7 +64,7 @@ function ScatterPlot() {
           {yAxisLabel}
         </text>
         <Marks
-          circleRadius={7}
+          circleRadius={3}
           data={data}
           tooltipFormat={xAxisTickFormat}
           xScale={xScale}
@@ -77,4 +77,4 @@ function ScatterPlot() {
   )
 }
 
-export default ScatterPlot
+export default LineChart
