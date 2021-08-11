@@ -1,6 +1,7 @@
 // import BarChart from './BarChart'
+import ComplexScatterPlot from './ComplexScatterPlot'
 // import CSVInfo from './CSVInfo'
-import LineChart from './LineChart'
+// import LineChart from './LineChart'
 // import ScatterPlot from './ScatterPlot'
 // import RadialColorBurst from './RadialColorBurst'
 
@@ -15,7 +16,8 @@ import './App.css'
 // const array = range(36)
 
 function App() {
-  return <LineChart />
+  return <ComplexScatterPlot />
+  // return <LineChart />
   // return <ScatterPlot />
   // return <BarChart />
   // return <RadialColorBurst />
